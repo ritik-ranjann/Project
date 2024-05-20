@@ -1,0 +1,93 @@
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #f0f0f0;
+    font-family: Arial, sans-serif;
+}
+
+.container {
+    display: flex;
+}
+
+.flip {
+    list-style-type: none;
+    padding: 0;
+    margin: 0 10px;
+}
+
+.flip li {
+    position: relative;
+    width: 50px;
+    height: 100px;
+    margin: 0;
+    padding: 0;
+    display: none;
+}
+
+.flip li a {
+    text-decoration: none;
+}
+
+.up,
+.down {
+    position: absolute;
+    width: 100%;
+    height: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    backface-visibility: hidden;
+    font-size: 2em;
+    color: white;
+}
+
+.up {
+    background-color: #333;
+    border-bottom: 2px solid #444;
+}
+
+.down {
+    background-color: #444;
+    border-top: 2px solid #333;
+    transform: rotateX(180deg);
+}
+
+.flip li.show .up {
+    transform: rotateX(0deg);
+}
+
+.flip li.show .down {
+    transform: rotateX(0deg);
+}
+
+.flip li.flip .up {
+    animation: flipUp 0.5s ease-in forwards;
+}
+
+.flip li.flip .down {
+    animation: flipDown 0.5s ease-in forwards;
+}
+
+@keyframes flipUp {
+    0% {
+        transform: rotateX(0deg);
+    }
+    100% {
+        transform: rotateX(-180deg);
+    }
+}
+
+@keyframes flipDown {
+    0% {
+        transform: rotateX(180deg);
+    }
+    100% {
+        transform: rotateX(0deg);
+    }
+}
+
+.flip li.active {
+    display: block;
+}
